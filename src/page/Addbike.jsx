@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { addBike } from "../features/bikemanage/bikeSlice";
 
-const BikeForm = () => {
+const Bikeinfo = () => {
     const [formData, setFormData] = useState({
         name: "",
         color: "",
@@ -10,107 +12,112 @@ const BikeForm = () => {
         price: "",
     });
 
-    const naviget = useNavigate()
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
-        setFormData({...formData, [e.target.id]: e.target.value})
+        setFormData({ ...formData, [e.target.id]: e.target.value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        toast.success("Add Bike Successfully")
-        naviget("/bikeinfo")
+        toast.success("🚴 Bike added successfully!");
+        
         setFormData({
             name: "",
             color: "",
             type: "",
             price: "",
         });
+
+        dispatch(addBike(formData))
+        navigate("/bikeinfo");
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center p-6">
+        <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-white dark:from-gray-900 dark:to-gray-800 flex items-center justify-center px-4 py-12">
             <form
                 onSubmit={handleSubmit}
-                className="w-full max-w-xl bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg"
+                className="w-full max-w-3xl bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-10 space-y-8"
             >
-                <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">
-                    Add New Bike
+                <h2 className="text-4xl font-extrabold text-center text-indigo-700 dark:text-white mb-6">
+                    🚴‍♂️ Add a New Bike
                 </h2>
 
-                <div className="mb-4">
-                    <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Bike Name
-                    </label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full p-2 border rounded-lg bg-gray-50 dark:bg-gray-700 dark:text-white"
-                        placeholder="e.g., Yamaha R15"
-                    />
-                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Bike Name
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                            placeholder="e.g. Yamaha R15"
+                            required
+                        />
+                    </div>
 
-                <div className="mb-4">
-                    <label htmlFor="color" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Color
-                    </label>
-                    <input
-                        type="text"
-                        id="color"
-                        name="color"
-                        value={formData.color}
-                        onChange={handleChange}
-                        required
-                        className="w-full p-2 border rounded-lg bg-gray-50 dark:bg-gray-700 dark:text-white"
-                        placeholder="e.g., Red"
-                    />
-                </div>
+                    <div>
+                        <label htmlFor="color" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Color
+                        </label>
+                        <input
+                            type="text"
+                            id="color"
+                            value={formData.color}
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                            placeholder="e.g. Matte Black"
+                            required
+                        />
+                    </div>
 
-                <div className="mb-4">
-                    <label htmlFor="type" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Type
-                    </label>
-                    <input
-                        type="text"
-                        id="type"
-                        name="type"
-                        value={formData.type}
-                        onChange={handleChange}
-                        required
-                        className="w-full p-2 border rounded-lg bg-gray-50 dark:bg-gray-700 dark:text-white"
-                        placeholder="e.g., Sports, Cruiser"
-                    />
-                </div>
-
-                <div className="mb-6">
-                    <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Price
-                    </label>
-                    <input
-                        type="text"
-                        id="price"
-                        name="price"
-                        value={formData.price}
-                        onChange={handleChange}
-                        required
-                        className="w-full p-2 border rounded-lg bg-gray-50 dark:bg-gray-700 dark:text-white"
-                        placeholder="e.g., $2500"
-                    />
+                    <div>
+                        <label htmlFor="type" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Type
+                        </label>
+                        <select
+                            id="type"
+                            value={formData.type}
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                            required
+                        >
+                            <option value="" disabled>
+                                Select type
+                            </option>
+                            <option value="Bike">Bike</option>
+                            <option value="Scooty">Scooty</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor="price" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Price
+                        </label>
+                        <input
+                            type="text"
+                            id="price"
+                            value={formData.price}
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                            placeholder="e.g. $2500"
+                            required
+                        />
+                    </div>
                 </div>
 
                 <button
                     type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition"
+                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition duration-300 shadow-md hover:shadow-lg"
                 >
-                    Submit Bike
+                    ➕ Add Bike
                 </button>
             </form>
         </div>
     );
 };
 
-export default BikeForm;
+export default Bikeinfo;

@@ -1,19 +1,31 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const bikeSlice = createSlice({
     name: "bikemanage",
-    initialState: [],
+    initialState: {
+        list: JSON.parse( localStorage.getItem("Bike")) || []
+    },
     reducers: {
         addBike: (state, action) => {
-            // Push the new bike to the state array
-            // state.push(action.payload);
-            console.log(action);
+            const newbike = {id: nanoid(), ...action.payload}
+            state.list.push(newbike);
+            localStorage.setItem("Bike", JSON.stringify(state.list))
+            console.log(action)
+        },
+        deleteBike: (state, action) =>{
+            state.list = state.list.filter((bike)=>{
+                return bike.id !== action.payload
+            })
+
+            localStorage.setItem("Bike", JSON.stringify(state.list))
+        },
+        editBike: (state, action) =>{
+            
         }
     }
 });
 
-// Export the action creator
-export const { addBike } = bikeSlice.actions;
 
-// Export the reducer
+export const { addBike, deleteBike } = bikeSlice.actions;
+
 export default bikeSlice.reducer;

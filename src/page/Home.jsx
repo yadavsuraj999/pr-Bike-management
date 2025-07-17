@@ -13,7 +13,7 @@ const Home = () => {
 
         <div className="hidden lg:flex lg:col-span-5 lg:mt-0">
           <img
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png"
+            src="https://www.pressanahonda.com/wt_prod-24926/images/home-section-img.jpeg"
             alt="Mobile phone mockup showcasing Flowbite's payment UI"
             className="w-full h-auto"
           />

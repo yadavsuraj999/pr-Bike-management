@@ -3,7 +3,7 @@ import Header from "./components/Header"
 import Home from "./page/Home"
 import About from "./page/About"
 import Contact from "./page/Contact"
-import Login from "./page/Login"
+// import Login from "./page/Login"
 import { ToastContainer } from "react-toastify"
 import Bikeinfo from "./page/Bikeinfo"
 import Addbike from "./page/Addbike"
@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/bikeinfo" element={<Bikeinfo />} />
         <Route path="/addbike" element={<Addbike />} />
       </Routes>
