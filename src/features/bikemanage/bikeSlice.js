@@ -6,7 +6,8 @@ const bikeSlice = createSlice({
     reducers: {
         addBike: (state, action) => {
             // Push the new bike to the state array
-            state.push(action.payload);
+            // state.push(action.payload);
+            console.log(action);
         }
     }
 });
