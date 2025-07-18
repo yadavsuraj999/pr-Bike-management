@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify"
 import Bikeinfo from "./page/Bikeinfo"
 import Addbike from "./page/Addbike"
 import { useState } from "react"
+import Editbike from "./page/Editbike"
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/bikeinfo" element={<Bikeinfo />} />
         <Route path="/addbike" element={<Addbike />} />
+        <Route path="/editebike/:id" element={<Editbike />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>

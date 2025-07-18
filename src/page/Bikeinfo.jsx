@@ -1,14 +1,25 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deleteBike } from "../features/bikemanage/bikeSlice";
+import { deleteBike, sortprice } from "../features/bikemanage/bikeSlice";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const BikeInfo = () => {
+
+    const [issort, setIssort] = useState(false)
+
     const bikes = useSelector((state) => state.bikemanage.list);
 
     const dispatch = useDispatch()
+    const naviget = useNavigate()
 
     
     const handledelete = (id)=>{
         dispatch(deleteBike(id))
+    }
+
+    const handleshort = () => {
+        setIssort(!issort);
+        dispatch(sortprice(!issort))
     }
 
 
@@ -40,7 +51,7 @@ const BikeInfo = () => {
                                 <th className="px-6 py-3">Bike Name</th>
                                 <th className="px-6 py-3">Color</th>
                                 <th className="px-6 py-3">Type</th>
-                                <th className="px-6 py-3">Price</th>
+                                <th className="px-6 py-3 cursor-pointer" onClick={handleshort}>Price {!issort ? "⬆️" : "⬇️"} </th>
                                 <th className="px-6 py-3">Action</th>
                             </tr>
                         </thead>
@@ -68,7 +79,7 @@ const BikeInfo = () => {
                                         <td className="px-6 py-4">{bike.type}</td>
                                         <td className="px-6 py-4">{bike.price}</td>
                                         <td className="px-6 py-4 flex gap-4">
-                                            <button className="text-blue-600 dark:text-blue-400 hover:underline">
+                                            <button onClick={()=> naviget(`/editebike/${bike.id}`)} className="text-blue-600 dark:text-blue-400 hover:underline">
                                                 Edit
                                             </button>
                                             <button onClick={()=> handledelete(bike.id)} className="text-red-600 dark:text-red-400 hover:underline">
@@ -87,3 +98,8 @@ const BikeInfo = () => {
 };
 
 export default BikeInfo;
+
+
+
+// setIsshot(!isshort);
+        // dispatch(sortprice(!isshort))
