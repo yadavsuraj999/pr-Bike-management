@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const Header = () => {
@@ -28,7 +27,7 @@ const Header = () => {
                                 <Link to={"contact"} className={`${pathname == "/contact" ? "text-blue-700 " : " text-gray-50 hover:text-blue-700"}`}>Contact</Link>
                             </li>
                             <li>
-                                <Link to={"bikeinfo"} className={`${pathname == "/bikeifo" ? "text-blue-700 " : " text-gray-50 hover:text-blue-700"}`}>Bikeinfo</Link>
+                                <Link to={"bikeinfo"} className={`${pathname == "/bikeinfo" ? "text-blue-700 " : " text-gray-50 hover:text-blue-700"}`}>Bikeinfo</Link>
                             </li>
                         </ul>
                     </div>

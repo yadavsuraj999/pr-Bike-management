@@ -30,22 +30,30 @@ const bikeSlice = createSlice({
         },
         sortprice: (state, action) => {
             const array = JSON.parse(localStorage.getItem("Bike")) || []
-
-            state.list = array.sort((a, b )=>{
+            
+            state.list = array.sort((a, b) => {
                 console.log(array);
-                if(action.payload){
+                if (action.payload) {
                     return a.price - b.price
-                }else{
+                } else {
                     return b.price - a.price
                 }
                 
             })
+        },
+        searchbike: (state, action) => {
+            const search = action.payload.toLowerCase()
+            const array = JSON.parse(localStorage.getItem("Bike")) || []
+            state.list = array.filter((secr) => {
+                return secr.name.toLowerCase().includes(search)
+            })
         }
+
     }
 });
 
 
-export const { addBike, deleteBike, editBike, sortprice } = bikeSlice.actions;
+export const { addBike, deleteBike, editBike, sortprice, searchbike } = bikeSlice.actions;
 
 export default bikeSlice.reducer;
 

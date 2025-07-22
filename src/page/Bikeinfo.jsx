@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deleteBike, sortprice } from "../features/bikemanage/bikeSlice";
+import { deleteBike, searchbike, sortprice } from "../features/bikemanage/bikeSlice";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -22,6 +22,10 @@ const BikeInfo = () => {
         dispatch(sortprice(!issort))
     }
 
+    const handlesearch = (e)=> {
+        dispatch(searchbike(e.target.value))
+    }
+
 
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6">
@@ -35,13 +39,13 @@ const BikeInfo = () => {
                         <input
                             type="text"
                             placeholder="Search bikes..."
-                            className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+                            className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-l-lg   dark:bg-gray-800 dark:border-gray-600 dark:text-white" onChange={handlesearch}
                         />
-                        <button
-                            className="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-800"
+                        {/* <button
+                            className="bg-blue-600 text-white px-4 py-2 rounded-r-lg"
                         >
                             Search
-                        </button>
+                        </button> */}
                     </div>
                 </div>
                 <div className="overflow-x-auto shadow-md rounded-lg">
