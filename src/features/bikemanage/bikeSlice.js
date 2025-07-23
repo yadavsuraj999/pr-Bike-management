@@ -3,7 +3,9 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 const bikeSlice = createSlice({
     name: "bikemanage",
     initialState: {
-        list: JSON.parse(localStorage.getItem("Bike")) || []
+        list: JSON.parse(localStorage.getItem("Bike")) || [],
+        islogin: JSON.parse(localStorage.getItem("isloggedin")) || false
+        
     },
     reducers: {
         addBike: (state, action) => {
@@ -47,13 +49,16 @@ const bikeSlice = createSlice({
             state.list = array.filter((secr) => {
                 return secr.name.toLowerCase().includes(search)
             })
+        },
+        login: (state, action)=>{
+            
         }
 
     }
 });
 
 
-export const { addBike, deleteBike, editBike, sortprice, searchbike } = bikeSlice.actions;
+export const { addBike, deleteBike, editBike, sortprice, searchbike,  } = bikeSlice.actions;
 
 export default bikeSlice.reducer;
 
