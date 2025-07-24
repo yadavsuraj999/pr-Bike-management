@@ -74,7 +74,6 @@ const About = () => {
 
     return (
         <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 min-h-screen flex items-center overflow-hidden">
-            {/* Animated Background Elements */}
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
                 <div className="absolute bottom-20 left-20 w-72 h-72 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -82,14 +81,10 @@ const About = () => {
             </div>
 
             <div className="relative py-12 px-6 mx-auto container sm:py-20 lg:px-8 z-10">
-                {/* Header Section */}
                 <div className="max-w-4xl mx-auto text-center mb-16 lg:mb-20">
-                    {/* Badge */}
                     <div className="inline-flex items-center px-4 py-2 mb-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full backdrop-blur-sm">
                         <span className="text-sm font-medium text-blue-300">🚴‍♂️ About BikeFlow</span>
                     </div>
-
-                    {/* Main Heading */}
                     <h2 className="mb-6 text-4xl md:text-5xl lg:text-6xl tracking-tight font-black">
                         <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
                             Built for Modern
@@ -99,8 +94,6 @@ const About = () => {
                             Bike Businesses
                         </span>
                     </h2>
-
-                    {/* Description */}
                     <p className="text-slate-300 text-lg md:text-xl lg:text-2xl font-light leading-relaxed max-w-3xl mx-auto">
                         We empower bike shops, service centers, and enthusiasts with cutting-edge technology that 
                         <span className="text-blue-400 font-medium"> streamlines operations</span>, 
@@ -109,17 +102,13 @@ const About = () => {
                     </p>
                 </div>
 
-                {/* Features Grid */}
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
                     {features.map(({ title, description, icon }, index) => (
                         <div 
                             key={index} 
                             className="group relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 transition-all duration-500 hover:transform hover:scale-105 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10"
                         >
-                            {/* Glow Effect on Hover */}
                             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-purple-500/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                            
-                            {/* Icon Container */}
                             <div className="relative flex justify-center items-center mb-6 w-16 h-16 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-all duration-300">
                                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl blur group-hover:blur-md transition-all duration-300"></div>
                                 <svg 
@@ -132,7 +121,6 @@ const About = () => {
                                 </svg>
                             </div>
 
-                            {/* Content */}
                             <div className="relative">
                                 <h3 className="mb-4 text-xl font-bold text-white group-hover:text-blue-100 transition-colors duration-300">
                                     {title}
@@ -142,13 +130,11 @@ const About = () => {
                                 </p>
                             </div>
 
-                            {/* Hover Accent */}
                             <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
                     ))}
                 </div>
 
-                {/* Bottom CTA Section */}
                 <div className="mt-20 text-center">
                     <div className="inline-flex flex-col sm:flex-row gap-4">
                         <button className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold px-8 py-4 rounded-2xl shadow-2xl shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 hover:shadow-blue-500/40">

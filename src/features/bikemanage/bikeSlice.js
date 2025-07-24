@@ -5,7 +5,6 @@ const bikeSlice = createSlice({
     initialState: {
         list: JSON.parse(localStorage.getItem("Bike")) || [],
         islogin: JSON.parse(localStorage.getItem("isloggedin")) || false
-        
     },
     reducers: {
         addBike: (state, action) => {
@@ -51,25 +50,20 @@ const bikeSlice = createSlice({
             })
         },
         login: (state, action)=>{
-            
+            const islogin = action.payload.email === "admin@gmail.com" && action.payload.password === "admin@123"
+
+            state.islogin = islogin;
+            localStorage.setItem("isloggedin", JSON.stringify(islogin));
+        },
+        setLogin: (state, action)=>{
+            state.islogin = action.payload;
+            localStorage.setItem("isloggedin", JSON.stringify(state.islogin))
         }
 
     }
 });
 
 
-export const { addBike, deleteBike, editBike, sortprice, searchbike,  } = bikeSlice.actions;
+export const { addBike, deleteBike, editBike, sortprice, searchbike, login, setLogin  } = bikeSlice.actions;
 
 export default bikeSlice.reducer;
-
-
-
-// const array = JSON.parse(localStorage.getItem("Bike")) || []
-
-//             state.list = array.sort((a, b) => {
-//                 if (action.payload) {
-//                     return a.price - b.price
-//                 } else {
-//                     return b.price - a.price
-//                 }
-//             })
